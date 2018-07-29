@@ -23,6 +23,21 @@ $(document).ready(function () {
 
                 }
             }
+            function rockAnimalImage() {
+                console.log("clicked");
+
+                var state =$(this).attr("data-state");
+                if(state ==="still"){
+                    $(this).attr("src",$(this).attr("data-animate"));
+                    $(this).attr("data-state","animate");
+                  }
+                  else{
+                    $(this).attr("src",$(this).attr("data-still"));
+                    $(this).attr("data-state","still");
+            
+            
+                  }
+            }
 
             renderButtons();
             $("#addAnimal").on("click", function (event) {
@@ -35,32 +50,33 @@ $(document).ready(function () {
 
                 //  $(document).on("click", "#addAnimal", function () {
                     renderButtons();
+                    
 
-
+                
             });
             renderButtons();
 
 
                 function animalInfo () {
-                    console.log("clicked");
 
                 // In this case, the "this" keyword refers to the button that was clicked
                 var animal = $(this).attr("data-name");
                 var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
                     animal + "&api_key=8KlorxDnGq90aNmGgX8hb5tF5c5UGvig&limit=10";
-
+                    
+                                
                 // Performing our AJAX GET request
                 $.ajax({
                         url: queryURL,
                         method: "GET"
                     })
-
+                    
 
                     // After the data comes back from the API
                     .then(function (response) {
                         // Storing an array of results in the results variable
                         var results = response.data;
-
+                        console.log(response.data);
                         // Looping over every result item
                         for (var i = 0; i < results.length; i++) {
 
@@ -77,10 +93,18 @@ $(document).ready(function () {
 
                                 // Creating an image tag
                                 var animalImage = $("<img>");
+                                var imageStill = results[i].images.fixed_width_still.url;
+                                var imageAnimate = results[i].images.fixed_height.url;
 
                                 // Giving the image tag an src attribute of a proprty pulled off the
                                 // result item
-                                animalImage.attr("src", results[i].images.fixed_height.url);
+                                animalImage.attr("src", imageStill);
+                                animalImage.attr("data-state", "still");
+                                animalImage.attr("class", "gif");
+                                animalImage.attr("data-animate",imageAnimate);
+                                animalImage.attr("data-still",imageStill);
+
+                                
 
                                 // Appending the paragraph and personImage we created to the "gifDiv" div we created
                                 gifDiv.append(p);
@@ -98,6 +122,8 @@ $(document).ready(function () {
             }
         
         $(document).on("click",".topic-btn", animalInfo );
+        $(document).on("click",".gif", rockAnimalImage );
+
 
     });
 
@@ -113,7 +139,7 @@ $(document).ready(function () {
 
 
 
-
+// restarted from this
 
             //     // After the data comes back from the API
             //     .then(function(response) {
