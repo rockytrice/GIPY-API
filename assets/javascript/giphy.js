@@ -13,7 +13,7 @@ $(document).ready(function () {
                 for (var i = 0; i < topics.length; i++) {
                     var a = $("<button>");
                     // adding a class of animal-btn to the button
-                    a.addClass("topic");
+                    a.addClass("topic-btn");
                     // adding a data attribute
                     a.attr("data-name", topics[i]);
                     // providing the button text
@@ -34,16 +34,18 @@ $(document).ready(function () {
 
 
                 //  $(document).on("click", "#addAnimal", function () {
+                    renderButtons();
 
 
             });
             renderButtons();
 
 
-            $("button").on("click", function () {
+                function animalInfo () {
+                    console.log("clicked");
+
                 // In this case, the "this" keyword refers to the button that was clicked
                 var animal = $(this).attr("data-name");
-
                 var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
                     animal + "&api_key=8KlorxDnGq90aNmGgX8hb5tF5c5UGvig&limit=10";
 
@@ -86,15 +88,32 @@ $(document).ready(function () {
 
                                 // Prepending the gifDiv to the "#gifs-appear-here" div in the HTML
                                 $("#gif-view").prepend(gifDiv);
+
                             }
                         }
 
-                        $(document).on("click", ".topic", displayAnimalInfo);
-                        renderButtons();
+                        // renderButtons();
                     });
 
-            });
-        })
+            }
+        
+        $(document).on("click",".topic-btn", animalInfo );
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             //     // After the data comes back from the API
             //     .then(function(response) {
