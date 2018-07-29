@@ -1,0 +1,19 @@
+
+body {
+background-image: url()
+}
+button {
+    margin: 10px
+}
+label {
+    margin: 10px;
+}
+
+form {
+float: right;
+}
+
+div.item {
+    display: inline-block;
+    margin: 10px;
+}
