@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     // animals array for gifs
-    var topics = ["cats", "dogs", "fox", "turtle", "aligator", "whales", "monkey", "pigs", "kangaroo", "owls"];
+    var topics = ["afv", "fall", "fox", "turtle", "aligator", "whales", "monkey", "pigs", "kangaroo", "owls"];
 
 
 
@@ -45,7 +45,7 @@ $(document).ready(function () {
 
     renderButtons();
     // this function handles events where one button is clicked
-    $("#addAnimal").on("click", function (event) {
+    $("#gifbtn").on("click", function (event) {
         event.preventDefault();
 
         // This line grabs the input from the textbox
@@ -53,9 +53,7 @@ $(document).ready(function () {
         // adding the search topic from the textbox to the array
         topics.push(topic);
 
-        $(".reset").click(function() {
-            $(this).closest('form').find("input[type=text], textarea").val("");
-        });
+       
         renderButtons();
 
 
@@ -63,6 +61,9 @@ $(document).ready(function () {
     });
     renderButtons();
 
+    $(".reset").click(function() {
+        $(this).closest('form').find("input[type=text], textarea").val("");
+    });
 
     function animalInfo() {
 
@@ -94,7 +95,10 @@ $(document).ready(function () {
 
                         // Storing the result item's rating
                         var rating = results[i].rating;
+                        
 
+                        
+                    
                         // Creating a paragraph tag with the result item's rating
                         var p = $("<p>").text("Rating: " + rating);
 
@@ -113,7 +117,7 @@ $(document).ready(function () {
 
 
 
-                        // Appending the paragraph and personImage we created to the "gifDiv" div we created
+                        // Appending the paragraph and animalImage we created to the "gifDiv" div we created
                         gifDiv.append(p);
                         gifDiv.append(animalImage);
 

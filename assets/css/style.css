@@ -1,19 +1,56 @@
-
 body {
-background-image: url()
+    background-image: url("http://www.pptwallpapers.com/thumb/hex-mesh-black-pattern-powerpoint-template.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    
 }
+
 button {
     margin: 10px
 }
+
 label {
     margin: 10px;
 }
 
 form {
-float: right;
+    display: inline;
 }
 
 div.item {
     display: inline-block;
     margin: 10px;
+}
+
+input {
+    margin: 13px;
+    background: linear-gradient(to bottom right, #000000 0%, #ffffff 100%);
+    
+}
+
+button.topic-btn {
+    background: linear-gradient(to top left, #ffffff 0%, #000000 100%);
+
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.jumbotron {
+    background: transparent;
+}
+h1,p {
+    font-family: 'Hanalei Fill', cursive;
+    color:white;
+}
+img.gif {
+    border-style: solid;
+    border-color: white;
 }
